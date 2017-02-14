@@ -1,3 +1,7 @@
+# spindance.example.aws.elasticbeanstalk.akkaDocker
+
+
+## Docker Instructions
 sbt assembly
 
 docker build -t image-grouper .
