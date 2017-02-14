@@ -31,6 +31,9 @@ object Main extends App with StrictLogging {
   //  POST: http://hostname/images/GROUP_ID/IMAGE_ID
 
   val route: Route =
+    pathSingleSlash {
+      complete("Hello World!")
+    } ~
     path("images" / Segment) { (groupId: GroupId) =>
       get {
         val maybeImageHtmlElements = imageMap get groupId map (_.keys) map { (imageIds) => imageIds map (imageId => imageDisplay(groupId, imageId)) }
