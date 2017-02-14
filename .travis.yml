@@ -13,7 +13,7 @@ before_deploy:
 deploy:
   provider: elasticbeanstalk
   skip_cleanup: true
-  app: Portal
+  app: image-grouper
   env: dev-image-grouper
   bucket_name: elasticbeanstalk-us-east-1-484909666141
   zip_file: deploy.zip
