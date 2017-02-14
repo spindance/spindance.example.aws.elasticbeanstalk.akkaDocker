@@ -1,0 +1,31 @@
+POST /images/123ABC/camera-1 HTTP/1.1
+Host: localhost:8080
+Transfer-Encoding: chunked
+
+B
+hello-world
+E
+this-is-a-test
+0
+
+
+POST /images/123ABC/camera-1 HTTP/1.1
+Host: 10.0.0.179:8080
+Transfer-Encoding: chunked
+
+B
+hello-world
+E
+this-is-a-test
+0
+
+
+POST /images/123ABC/camera-1 HTTP/1.1
+Host: localhost:8080
+Transfer-Encoding: chunked
+
+4
+test
+5
+hello
+0
