@@ -8,7 +8,7 @@ script:
   - sbt assembly
 
 before_deploy:
-  - zip -r deploy.zip target/scala-2.12/content-camera-service.jar Dockerfile
+  - zip -r deploy.zip target/scala-2.12/image-grouper.jar Dockerfile
 
 deploy:
   provider: elasticbeanstalk

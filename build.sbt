@@ -1,4 +1,4 @@
-name := "content-camera-service"
+name := "image-grouper"
 
 version := "1.0"
 
@@ -13,4 +13,4 @@ libraryDependencies ++= {
   )
 }
 
-assemblyJarName in assembly := "content-camera-service.jar"
+assemblyJarName in assembly := "image-grouper.jar"
