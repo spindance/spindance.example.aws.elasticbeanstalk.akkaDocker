@@ -1,8 +1,12 @@
 language: scala
+jdk: oraclejdk8
 scala:
   - 2.12.1
+java:
+  -
 
 script:
+  - sbt test
   - sbt assembly
 
 #before_deploy:
