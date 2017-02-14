@@ -7,19 +7,19 @@ script:
   - sbt test
   - sbt assembly
 
-#before_deploy:
-#  - zip -r deploy.zip target/scala-2.12/content-camera-service.jar Dockerfile
+before_deploy:
+  - zip -r deploy.zip target/scala-2.12/content-camera-service.jar Dockerfile
 
-#deploy:
-#  provider: elasticbeanstalk
-#  skip_cleanup: true
-#  app: Portal
-#  env: dev-smartcart-portal
-#  bucket_name: elasticbeanstalk-us-east-1-754825644043
-#  zip_file: deploy.zip
-#  region: us-east-1
-#  access_key_id: AKIAJODYYJKAW5FWQKKA
-#  secret_access_key:
-#    secure: oT60iv23E2mR0pNYC1Vsum3KHDKHDhLy1vARnAbJPKk/JMBJrxJ6W7kqXf1oOl4tlWsflG4ucAjOWvWKkR7uutxplRN48Hv6O3yVMZoPcvMF5Y0Q/wd3/ktEkllZlu9PUzcniDRG5K1g2+RTb4Hfz+0FHYprzCakvDvNyroIPGhZc3D9bMu0LJ8mURE8odSBMNsJpBAaMBZqkqiXetEqgg/Qx15ISLD7V3cjgdaAssQ+jFoLveEjC5aDzdrsUub9beXwmitEIdO9ITwCq65Q3enRUCTwyhLMfLFTaB7T75FPG/c2712a6Oe0JP0qGR5RwRT92wknKYKTUY7sDzGw14KKUiiqJoxHxslfrIW3vare9AppYXb/qFaZKN+9B2ouIPCIQL0LPT+O69OK2ggVwAvtIZ5eEj9yCNC5btszqMmtXK21hhf8ByYNyZPHdqYHBBMKny3+iSdvKS6NkhNS5aOFlBygvurnyMzA9rEjnXruk2tofp77weaVrsZetojrnEV7aJ/UHVy4uJw+qxZ42SgQQNGmmWLTBwh2H2WFHPQPNVozv11HMKZOrBioIXAqf4hyaOcdupT/5IGVPgE6L46lms3X1EtwQ9c2nTNJ4iVjAA5PJG/cz56nnfB/s6ahCT4e7G9ByBEXwloTozxbNm+GZ7Zr7uuXL7NrlLx8RkQ=
-#  on:
-#    branch: master
+deploy:
+  provider: elasticbeanstalk
+  skip_cleanup: true
+  app: Portal
+  env: dev-image-grouper
+  bucket_name: elasticbeanstalk-us-east-1-484909666141
+  zip_file: deploy.zip
+  region: us-east-1
+  access_key_id: AKIAJVHFB43AE27SYC2A
+  secret_access_key:
+    secure: "l5nF8JGBj11moHlgXsb7LbI6HKaJ8QahdvP/b4G+5dlF0xBJJB35UpQA4F20inXA7xRCzymwixjoXsq9sZ0i9A+jWhRVOJg40ILaO2mzZ/s/5Ce3XV2XzQAZY2xoiNXGDRrtCWakCo4jMrum2U6L3muIO6Y1jV9l8SU51893gble6dl4k0I2JqzgXuPAVJMTuQO/uYmPcwavwlVdFTUCLg0xe2IxTRQ+hyJl2ArVpD2V7saH4pw97d2vOW8hutKFjtrcAF+ll4YeeZ8KxmqFe739r8MJir806RofWH+weFl2cQrMXAFh4XftTZ+8Bwt+q1U5wVYu+ggpmLKH+X9ySkPLACJ+SEy8dyDjt89/M3WUJOh3A3zIQ8s6Zh3RoqxPxUpSgYNima9N++WgQjVe6izMJzUJdHsYXBl1C8u7JSSJtRghyzcxiNAe1XkQnGLsylFyh8NvUjDK8uncm8v0YxuF+oZJrNhiAf3M3U02Z4UWuw2HNmGOv7RmKQwYJtfHCzRkwu+v9NyxSlreUnXnmAOXqCqbd/DRvMX1HjukftYrkN9+xLcNodH5D8ErrAbDi8IGqhpr8AVuAwBICdU7EaybhdK+LHV5JAcBBy9nC4KOq6hYQaSEG4tKGUcQfXet6fiKWwmlP09oZ6E5rj42L1TJE7Njze0heXXkxBNI/Gc="
+  on:
+    branch: master
