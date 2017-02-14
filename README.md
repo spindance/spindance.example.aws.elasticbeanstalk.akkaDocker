@@ -1,5 +1,9 @@
+# spindance.example.aws.elasticbeanstalk.akkaDocker
+
+
+## Docker Instructions
 sbt assembly
 
-docker build -t cc-service .
+docker build -t image-grouper .
 
-docker run -it -p 8080:8080 --rm --name my-runnning-cc-service cc-service
+docker run -it -p 8080:8080 --rm --name my-runnning-image-grouper image-grouper
