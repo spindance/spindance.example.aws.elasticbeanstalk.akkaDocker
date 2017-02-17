@@ -34,9 +34,9 @@ object Main extends App with StrictLogging {
     pathSingleSlash {
       complete("Hello World!")
     } ~
-    path("spindance") {
-      complete("SpinDance is the solution to your IoT problem!")
-    } ~
+//    path("spindance") {
+//      complete("SpinDance is the solution to your IoT problem!")
+//    } ~
     path("images" / Segment) { (groupId: GroupId) =>
       get {
         val maybeImageHtmlElements = imageMap get groupId map (_.keys) map { (imageIds) => imageIds map (imageId => imageDisplay(groupId, imageId)) }
