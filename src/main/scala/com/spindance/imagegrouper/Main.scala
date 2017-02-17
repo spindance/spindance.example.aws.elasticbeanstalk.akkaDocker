@@ -32,10 +32,7 @@ object Main extends App with StrictLogging {
 
   val route: Route =
     pathSingleSlash {
-      complete("Hello World!\n")
-    } ~
-    path("spindance") {
-      complete("SpinDance is the solution to your IoT problem!\n")
+      complete("Server is running...\n")
     } ~
     path("images" / Segment) { (groupId: GroupId) =>
       get {
