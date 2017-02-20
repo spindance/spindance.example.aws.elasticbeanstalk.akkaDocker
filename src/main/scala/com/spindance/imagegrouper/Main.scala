@@ -12,7 +12,7 @@ import com.typesafe.scalalogging.StrictLogging
 
 import scala.concurrent.duration._
 import scala.language.postfixOps
-import scala.util.{Failure, Success}
+import scala.util.{Failure, Success, Try}
 
 object Main extends App with StrictLogging {
 
@@ -26,13 +26,25 @@ object Main extends App with StrictLogging {
   // In memory storage of JPEG images. Not recommended for production!
   var imageMap: Map[GroupId, Map[ImageId, ByteString]] = Map()
 
+  val timeOut: FiniteDuration = {
+    Try(System.getProperty("image-grouper-upload-timeout").toInt) match {
+      case Success(value) => value seconds
+      case Failure(_) => 60 seconds
+    }
+  }
+
   //  GET: http://hostname/images/GROUP_ID
   //  GET: http://hostname/images/GROUP_ID/IMAGE_ID
   //  POST: http://hostname/images/GROUP_ID/IMAGE_ID
 
   val route: Route =
     pathSingleSlash {
-      complete("Server is running...\n")
+      complete(
+        s"""
+          |Server is running...
+          |Upload Timeout = $timeOut
+        """.stripMargin
+      )
     } ~
     path("images" / Segment) { (groupId: GroupId) =>
       get {
@@ -67,7 +79,7 @@ object Main extends App with StrictLogging {
 
           // We are just going to wait for the entire image to be transferred into RAM. This might not be a great idea
           // in a production environment. It might be better to just stream the image data to the disk.
-          val strictEntity = req.entity.toStrict(60 seconds)
+          val strictEntity = req.entity.toStrict(timeOut)
 
           val response = strictEntity map { se =>
             logger.info(s"Finished receiving data, Strict request: $se")
@@ -99,6 +111,7 @@ object Main extends App with StrictLogging {
   bindingFuture.onComplete {
     case Success(result) =>
       logger.info(s"Successful binding: $result")
+      logger.info(s"Upload timeout = $timeOut")
 
     case Failure(result) =>
       logger.error(s"Failed to bind! $result")
